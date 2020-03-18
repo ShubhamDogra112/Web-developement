@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .root1{
+            display:flex;
+            /* flex-direction: column; */
+        /* align-items: center;
+            justify-content: flex-start;
+        } */
+
+        .root1 {
+            position: relative;
+
+        }
+
+        .first,
+        .second,
+        .third {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+
+        }
+
+        .second {
+            left: 220px;
+            top: 110px;
+        }
+
+        .third {
+            left: 330px;
+            top: 110px;
+        }
+
+        .first {
+            top: 110px;
+            left: 110px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="root">
+        <div class="one">Shubham Dogra</div>
+        <div class="two">Shivani Dogra</div>
+        <button class="button">Click to toggle contents</button>
+        <button class="button2">Click to toggle contents</button>
+
+    </div>
+
+    <div class="root1" style="margin: 100px;height: 500px;width: 100%;border: 1px solid red;">
+        <div class="first" style="height: 100px;width: 100px; border: 1px solid green;position: absolute;">1
+            <div class="profile1" style="height:20px;width:20px;border:1px solid orange;"></div>
+
+            <div class="content content1" style="margin-top: 25px;">ShubhamDogra</div>
+
+
+        </div>
+        <div class="second" style="height: 100px;width: 100px; border: 1px solid green; position: absolute;">2
+            <div class="profile2" style="height:20px;width:20px;border:1px solid orange;"></div>
+
+            <div class="content content2" style="margin-top: 25px;">Anubhav Jedia</div>
+
+        </div>
+        <div class="third" style="height: 100px;width: 100px; border: 1px solid green;position: absolute;">3
+            <div class="profile3" style="height:20px;width:20px;border:1px solid orange;"></div>
+
+            <div class="content content3" style="margin-top: 25px;">Akshat Kumar Agarwal</div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <script src="./jquerymin.js"></script>
+    <script>
+        let animate_first = false
+        let animate_second = false
+        let animate_third = false
+
+        $(".two").hide()
+
+        $(".button").click(function () {
+            $(".one").show()
+            $(".two").hide()
+
+        })
+
+
+        $(".button2").click(function () {
+            $(".one").hide()
+            $(".two").show()
+
+        })
+        // for the content animation
+        $(".content").hide()
+
+        // profile animation code starts here
+        $(".first").click(function () {
+
+            if (animate_second) {
+                $(".second").animate({
+                    marginLeft: "220px",
+                    left: "0px",
+
+                    height: "100px",
+                    width: "100px"
+                }, 1000, 'linear')
+                animate_second = !animate_second
+                $(".content2").hide()
+
+                $(".profile1").animate({
+                    height: "20px",
+                    width: "20px"
+                })
+
+
+
+            }
+            if (animate_third) {
+                $(".third").animate({
+                    marginLeft: "330px",
+                    left: "0px",
+
+
+                    height: "100px",
+                    width: "100px"
+                }, 1000, 'linear')
+                animate_third = !animate_third
+                $(".content3").hide()
+                $(".content2").hide()
+
+                $(".profile3").animate({
+                    height: "20px",
+                    width: "20px"
+                })
+
+            }
+
+            if (!animate_first) {
+                $(this).animate({
+                    marginLeft: "+600px",
+                    height: "300px",
+                    width: "300px"
+                },1000,'linear')
+                animate_first = true
+                console.log(animate_first)
+                $(".content1").show()
+
+                $(".profile1").animate({
+                    height: "80px",
+                    width: "80px"
+                })
+
+            }
+        })
+
+        $(".second").click(function () {
+            if (animate_first) {
+                $(".first").animate({
+                    marginLeft: "110px",
+                    left: '0px',
+
+                    height: "100px",
+                    width: "100px"
+                }, 1000, 'linear')
+                animate_first = !animate_first
+                $(".content1").hide()
+
+                $(".content2").hide()
+
+                $(".profile1").animate({
+                    height: "20px",
+                    width: "20px"
+                })
+
+
+            }
+            if (animate_third) {
+                $(".third").animate({
+                    marginLeft: "330px",
+                    left: "0px",
+
+
+                    height: "100px",
+                    width: "100px"
+                }, 1000, 'linear')
+                animate_third = !animate_third
+                $(".content3").hide()
+
+                $(".content2").hide()
+
+                $(".profile3").animate({
+                    height: "20px",
+                    width: "20px"
+                })
+
+            }
+            if (!animate_second) {
+                $(this).animate({
+                    marginLeft: "+600px",
+                    height: "300px",
+                    width: "300px"
+                }, 1000, 'linear')
+                animate_second = true
+                $(".content2").show()
+
+                $(".profile2").animate({
+                    height: "80px",
+                    width: "80px"
+                })
+
+            }
+        })
+        $(".third").click(function () {
+
+            if (animate_first) {
+                $(".first").animate({
+                    marginLeft: "110px",
+                    left: "0px",
+
+                    height: "100px",
+                    width: "100px"
+                }, 1000, 'linear')
+                animate_first = !animate_first
+                $(".content1").hide()
+
+                $(".profile1").animate({
+                    height: "20px",
+                    width: "20px"
+                })
+
+
+
+            }
+            if (animate_second) {
+                $(".second").animate({
+                    marginLeft: "220px",
+                    left: "0px",
+
+
+                    height: "100px",
+                    width: "100px"
+                }, 1000, 'linear')
+                animate_second = !animate_second
+                $(".content2").hide()
+
+                $(".profile2").animate({
+                    height: "20px",
+                    width: "20px"
+                })
+
+            }
+            if (!animate_third) {
+                $(this).animate({
+                    marginLeft: "+600px",
+                    height: "300px",
+                    width: "300px"
+                }, 1000, 'linear')
+                animate_third = true
+                $(".content3").show()
+
+                $(".profile3").animate({
+                    height: "80px",
+                    width: "80px"
+                })
+
+            }
+        })
+
+        // profile animation code end here
+    </script>
+</body>
+
+</html>
